@@ -1,9 +1,13 @@
 import express, {Request, Response} from 'express'
-const app = express()
-const port = 5000
 
-app.get('/', (req:Request, res:Response) => {
-    res.send('Lets start')
+const app = express()
+const port = process.env.PORT || 5000
+
+const categories = [{title: 'Makeup'}, {title: 'Shoes'}, {title: 'Bags'}, {title: 'Clothes'}, {title: 'Watch'}, {title: 'Accessories'}, {title: 'Nails'}, {title: 'Lingerie'}, {title: 'Perfume'}, {title: 'Pajama'}]
+
+
+app.get('/categories', (req: Request, res: Response) => {
+    res.send(categories)
 })
 
 app.listen(port, () => {

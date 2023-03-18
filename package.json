@@ -4,10 +4,11 @@
   "main": "src/index.ts",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "uuid": "^9.0.0"
   },
   "scripts": {
-    "watch" : "tsc -w",
+    "watch": "tsc -w",
     "dev": "nodemon --inspect dist/index.js"
   },
   "devDependencies": {
