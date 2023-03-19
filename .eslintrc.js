@@ -5,5 +5,7 @@ module.exports = {
     project: './tsconfig.json',
   },
   plugins: ['import'],
-  rules: {},
+  rules: {
+    '@typescript-eslint/no-redeclare': 'off',
+  },
 };
