@@ -1,58 +1,37 @@
 import { Request, Response, Router } from 'express';
-import { v4 as uuidv4 } from 'uuid';
+import { cartRepository } from '../repositories/cart-repository';
 
 export const cartRouter = Router({});
 
-const productsInCart = [];
-
-const products = [
-  {
-    id: uuidv4(),
-    title: 'pajama ODH',
-    price: 120,
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    color: ['black', 'white', 'red', 'green', 'blue'],
-  },
-  {
-    id: uuidv4(),
-    title: 'pajama ST',
-    price: 140,
-    sizes: ['5ml', '10ml', '15ml'],
-  },
-  {
-    id: uuidv4(),
-    title: 'pajama ST',
-    price: 520,
-    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    color: ['black', 'white', 'red', 'green', 'blue'],
-  },
-];
+cartRouter.get('/', (req: Request, res: Response) => {
+  const products = cartRepository.getCartProducts();
+  res.send(products);
+});
 
 cartRouter.post('/', (req: Request, res: Response) => {
-  const newProductInCart = products.find((pr) => pr.id === req.body.id);
-  if (newProductInCart) {
-    productsInCart.push(newProductInCart);
-    res.status(201).send(newProductInCart);
+  const newProduct = cartRepository.addCartProduct(req.body.id);
+  if (newProduct) {
+    res.status(201).send(newProduct);
   } else {
     res.send(404);
   }
 });
 cartRouter.delete('/', (req: Request, res: Response) => {
-  for (let i = 0; i < productsInCart.length; i++) {
-    if (productsInCart[i].id === req.params.id) {
-      productsInCart.splice(i, 1);
-      res.send(204);
-      return;
-    }
+  const removedProduct = cartRepository.removeProductFromCart(req.params.id);
+  if (removedProduct) {
+    res.send(204);
+  } else {
+    res.send(404);
   }
-  res.send(404);
 });
 cartRouter.put('/:id', (req: Request, res: Response) => {
-  let product = productsInCart.find((u) => u.id === req.params.id);
-  if (product) {
-    product.size = req.body.size;
-    product.color = req.body.color;
-    res.send(product);
+  const updatedProductInCart = cartRepository.updateProductDetailsFromCart(
+    req.params.id,
+    req.body.size,
+    req.body.color,
+  );
+  if (updatedProductInCart) {
+    res.send(updatedProductInCart);
   } else {
     res.send(404);
   }
