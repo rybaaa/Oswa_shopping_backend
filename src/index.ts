@@ -8,7 +8,12 @@ const app = express();
 const port = process.env.PORT || 5000;
 const parserMiddleware = bodyParser({});
 
-app.use(cors({ origin: '*' }));
+app.use(
+  cors({
+    origin: ['http://localhost:3000', 'https://oswa-shopping.vercel.app/'],
+    credentials: true,
+  }),
+);
 app.use(parserMiddleware);
 app.use('/cart', cartRouter);
 app.use('/categories', categoriesRouter);
