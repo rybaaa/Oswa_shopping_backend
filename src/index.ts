@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 import { cartRouter } from './routes/cart-router';
 import { categoriesRouter } from './routes/categories-router';
@@ -8,6 +9,7 @@ const port = process.env.PORT || 5000;
 const parserMiddleware = bodyParser({});
 
 app.use(parserMiddleware);
+app.use(cors());
 app.use('/cart', cartRouter);
 app.use('/categories', categoriesRouter);
 
