@@ -10,7 +10,7 @@ const parserMiddleware = bodyParser({});
 
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'https://oswa-shopping.vercel.app/'],
+    origin: ['http://localhost:3000', 'https://oswa-shopping.vercel.app'],
     credentials: true,
   }),
 );
