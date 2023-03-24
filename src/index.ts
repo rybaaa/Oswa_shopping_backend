@@ -8,8 +8,8 @@ const app = express();
 const port = process.env.PORT || 5000;
 const parserMiddleware = bodyParser({});
 
+app.use(cors({ origin: '*' }));
 app.use(parserMiddleware);
-app.use(cors());
 app.use('/cart', cartRouter);
 app.use('/categories', categoriesRouter);
 
