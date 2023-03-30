@@ -1,16 +1,66 @@
 import { v4 as uuidv4 } from 'uuid';
 
 const categories = [
-  { id: uuidv4(), title: 'makeup' },
-  { id: uuidv4(), title: 'shoes' },
-  { id: uuidv4(), title: 'bags' },
-  { id: uuidv4(), title: 'clothes' },
-  { id: uuidv4(), title: 'watch' },
-  { id: uuidv4(), title: 'accessories' },
-  { id: uuidv4(), title: 'nails' },
-  { id: uuidv4(), title: 'lingerie' },
-  { id: uuidv4(), title: 'perfume' },
-  { id: uuidv4(), title: 'pajama' },
+  {
+    id: uuidv4(),
+    title: 'makeup',
+    image:
+      'https://raw.githubusercontent.com/rybaaa/Oswa-shopping/master/src/assets/categories/makeup.png',
+  },
+  {
+    id: uuidv4(),
+    title: 'shoes',
+    image:
+      'https://raw.githubusercontent.com/rybaaa/Oswa-shopping/master/src/assets/categories/shoes2.png',
+  },
+  {
+    id: uuidv4(),
+    title: 'bags',
+    image:
+      'https://raw.githubusercontent.com/rybaaa/Oswa-shopping/master/src/assets/categories/bags2.png',
+  },
+  {
+    id: uuidv4(),
+    title: 'clothes',
+    image:
+      'https://raw.githubusercontent.com/rybaaa/Oswa-shopping/master/src/assets/categories/clothes.png',
+  },
+  {
+    id: uuidv4(),
+    title: 'watch',
+    image:
+      'https://raw.githubusercontent.com/rybaaa/Oswa-shopping/master/src/assets/categories/watch.png',
+  },
+  {
+    id: uuidv4(),
+    title: 'accessories',
+    image:
+      'https://raw.githubusercontent.com/rybaaa/Oswa-shopping/master/src/assets/categories/accessories.png',
+  },
+  {
+    id: uuidv4(),
+    title: 'nails',
+    image:
+      'https://raw.githubusercontent.com/rybaaa/Oswa-shopping/master/src/assets/categories/nails.png',
+  },
+  {
+    id: uuidv4(),
+    title: 'lingerie',
+    image:
+      'https://raw.githubusercontent.com/rybaaa/Oswa-shopping/master/src/assets/categories/lingerie.png',
+  },
+  {
+    id: uuidv4(),
+    title: 'perfume',
+    image:
+      'https://raw.githubusercontent.com/rybaaa/Oswa-shopping/master/src/assets/categories/perfume.png',
+  },
+  {
+    id: uuidv4(),
+    title: 'pajama',
+    image:
+      'https://raw.githubusercontent.com/rybaaa/Oswa-shopping/master/src/assets/categories/pajama.png',
+  },
 ];
 
 export const categoriesRepository = {
