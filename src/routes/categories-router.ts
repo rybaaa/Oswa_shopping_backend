@@ -5,7 +5,11 @@ export const categoriesRouter = Router({});
 
 categoriesRouter.get('/', (req: Request, res: Response) => {
   const categories = categoriesRepository.fetchAllCategories();
-  res.send(categories);
+  if (categories) {
+    res.send(categories);
+  } else {
+    res.status(404).json({ error: 'Not found. Try again' });
+  }
 });
 
 categoriesRouter.get('/:title', (req: Request, res: Response) => {
@@ -15,6 +19,6 @@ categoriesRouter.get('/:title', (req: Request, res: Response) => {
   if (filteredCategories) {
     res.send(filteredCategories);
   } else {
-    res.send(404);
+    res.status(404).json({ error: 'Not found. Try another' });
   }
 });

@@ -13,15 +13,18 @@ cartRouter.post('/', (req: Request, res: Response) => {
   if (newProduct) {
     res.status(201).send(newProduct);
   } else {
-    res.send(404);
+    res.status(404).json({ error: 'Some error is occurred. Try again' });
   }
 });
 cartRouter.delete('/', (req: Request, res: Response) => {
+  if (!req.params.id) {
+    res.status(404).json({ error: 'No id' });
+  }
   const removedProduct = cartRepository.removeProductFromCart(req.params.id);
   if (removedProduct) {
     res.send(204);
   } else {
-    res.send(404);
+    res.status(404).json({ error: 'Some error is occurred. Try again' });
   }
 });
 cartRouter.put('/:id', (req: Request, res: Response) => {
