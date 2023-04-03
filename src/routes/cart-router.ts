@@ -20,9 +20,9 @@ cartRouter.delete('/', (req: Request, res: Response) => {
   if (!req.params.id) {
     res.status(404).json({ error: 'No id' });
   }
-  const removedProduct = cartRepository.removeProductFromCart(req.params.id);
-  if (removedProduct) {
-    res.send(204);
+  const newProducts = cartRepository.removeProductFromCart(req.params.id);
+  if (newProducts) {
+    res.status(204).send(newProducts);
   } else {
     res.status(404).json({ error: 'Some error is occurred. Try again' });
   }

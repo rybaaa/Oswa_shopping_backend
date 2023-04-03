@@ -9,9 +9,36 @@ const productsInCart: ProductsType[] = [
     price: 120,
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     currentSize: 'S',
-    color: ['black', 'white', 'red', 'green', 'blue'],
-    currentColor: 'black',
-    quantity: 1,
+    color: ['black', '#d7c6c6', 'red', 'green', 'blue'],
+    currentColor: '#d7c6c6',
+    quantity: [1, 2, 3, 4, 5],
+    currentQuantity: 1,
+    image:
+      'https://raw.githubusercontent.com/rybaaa/Oswa-shopping/master/src/assets/productsInCart/pajama%20ODH.png',
+  },
+  {
+    id: uuidv4(),
+    title: 'pajama ST',
+    price: 140,
+    sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+    currentSize: 'S',
+    color: ['black', '#d7c6c6', 'red', '#9a7da4', 'blue'],
+    currentColor: '#9a7da4',
+    quantity: [1, 2, 3, 4, 5],
+    currentQuantity: 1,
+    image:
+      'https://raw.githubusercontent.com/rybaaa/Oswa-shopping/master/src/assets/productsInCart/pajamaST.png',
+  },
+  {
+    id: uuidv4(),
+    title: 'perfume Chanel',
+    price: 520,
+    sizes: ['5ml', '10ml', '15ml'],
+    currentSize: 'S',
+    quantity: [1, 2, 3, 4, 5],
+    currentQuantity: 1,
+    image:
+      'https://raw.githubusercontent.com/rybaaa/Oswa-shopping/master/src/assets/productsInCart/chanel.png',
   },
 ];
 
@@ -32,7 +59,7 @@ export const cartRepository = {
     for (let i = 0; i < productsInCart.length; i++) {
       if (productsInCart[i].id === id) {
         productsInCart.splice(i, 1);
-        return true;
+        return productsInCart;
       }
     }
     return false;
