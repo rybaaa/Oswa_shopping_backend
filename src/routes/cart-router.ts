@@ -31,7 +31,7 @@ cartRouter.put('/:id', (req: Request, res: Response) => {
   const updatedProductInCart = cartRepository.updateProductDetailsFromCart(
     req.params.id,
     req.body.size,
-    req.body.color,
+    req.body.color
   );
   if (updatedProductInCart) {
     res.send(updatedProductInCart);

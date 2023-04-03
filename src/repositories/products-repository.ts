@@ -8,6 +8,7 @@ export type ProductsType = {
   currentSize: string;
   color?: string[];
   currentColor?: string;
+  quantity: number;
 };
 
 export const allProducts: ProductsType[] = [
@@ -19,6 +20,7 @@ export const allProducts: ProductsType[] = [
     currentSize: 'S',
     color: ['black', 'white', 'red', 'green', 'blue'],
     currentColor: 'black',
+    quantity: 1,
   },
   {
     id: uuidv4(),
@@ -26,6 +28,7 @@ export const allProducts: ProductsType[] = [
     price: 140,
     sizes: ['5ml', '10ml', '15ml'],
     currentSize: '5ml',
+    quantity: 1,
   },
   {
     id: uuidv4(),
@@ -35,5 +38,6 @@ export const allProducts: ProductsType[] = [
     currentSize: 'S',
     color: ['black', 'white', 'red', 'green', 'blue'],
     currentColor: 'black',
+    quantity: 1,
   },
 ];

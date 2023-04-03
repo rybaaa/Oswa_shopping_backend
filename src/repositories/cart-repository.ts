@@ -11,6 +11,7 @@ const productsInCart: ProductsType[] = [
     currentSize: 'S',
     color: ['black', 'white', 'red', 'green', 'blue'],
     currentColor: 'black',
+    quantity: 1,
   },
 ];
 

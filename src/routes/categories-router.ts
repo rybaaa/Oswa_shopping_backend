@@ -14,7 +14,7 @@ categoriesRouter.get('/', (req: Request, res: Response) => {
 
 categoriesRouter.get('/:title', (req: Request, res: Response) => {
   const filteredCategories = categoriesRepository.fetchCategoriesByFilter(
-    req.params.title,
+    req.params.title
   );
   if (filteredCategories) {
     res.send(filteredCategories);
