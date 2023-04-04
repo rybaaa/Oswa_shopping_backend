@@ -31,10 +31,10 @@ const productsInCart: ProductsType[] = [
   },
   {
     id: uuidv4(),
-    title: 'perfume Chanel',
+    title: 'perfume OT',
     price: 520,
     sizes: ['5ml', '10ml', '15ml'],
-    currentSize: 'S',
+    currentSize: '5ml',
     quantity: [1, 2, 3, 4, 5],
     currentQuantity: 1,
     image:

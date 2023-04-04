@@ -16,7 +16,7 @@ cartRouter.post('/', (req: Request, res: Response) => {
     res.status(404).json({ error: 'Some error is occurred. Try again' });
   }
 });
-cartRouter.delete('/', (req: Request, res: Response) => {
+cartRouter.delete('/:id', (req: Request, res: Response) => {
   if (!req.params.id) {
     res.status(404).json({ error: 'No id' });
   }
