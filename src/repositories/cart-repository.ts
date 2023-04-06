@@ -1,10 +1,11 @@
-import { allProducts, ProductsType } from './products-repository';
+import { allProducts, ProductItemType } from './products-repository';
 
 import { v4 as uuidv4 } from 'uuid';
 
-const productsInCart: ProductsType[] = [
+const productsInCart: ProductItemType[] = [
   {
     id: uuidv4(),
+    category: 'clothes',
     title: 'pajama ODH',
     price: 120,
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
@@ -18,6 +19,7 @@ const productsInCart: ProductsType[] = [
   },
   {
     id: uuidv4(),
+    category: 'clothes',
     title: 'pajama ST',
     price: 140,
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
@@ -31,6 +33,7 @@ const productsInCart: ProductsType[] = [
   },
   {
     id: uuidv4(),
+    category: 'perfume',
     title: 'perfume OT',
     price: 520,
     sizes: ['5ml', '10ml', '15ml'],
@@ -46,14 +49,17 @@ export const cartRepository = {
   getCartProducts() {
     return productsInCart;
   },
-  addCartProduct(id: string) {
-    const newProductInCart = allProducts.find((pr) => pr.id === id);
-    if (newProductInCart) {
-      productsInCart.push(newProductInCart);
-      return newProductInCart;
-    } else {
-      return undefined;
-    }
+  addCartProduct(id: string, title: string) {
+    const requiredItem = allProducts.find((it) => it.title === title);
+    if (requiredItem) {
+      const newProductInCart = requiredItem.items.find((pr) => pr.id === id);
+      if (newProductInCart) {
+        productsInCart.push(newProductInCart);
+        return newProductInCart;
+      } else {
+        return undefined;
+      }
+    } else return undefined;
   },
   removeProductFromCart(id: string) {
     for (let i = 0; i < productsInCart.length; i++) {

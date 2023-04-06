@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
 import { cartRouter } from './routes/cart-router';
 import { categoriesRouter } from './routes/categories-router';
+import { productsRouter } from './routes/products-router';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -12,10 +13,8 @@ const parserMiddleware = bodyParser({});
 app.use(fileUpload());
 app.use(express.static('public'));
 app.post('/upload', (req, res) => {
-  // Log the files to the console
   console.log(req.files);
 
-  // All good
   res.sendStatus(200);
 });
 app.use(
@@ -27,6 +26,7 @@ app.use(
 app.use(parserMiddleware);
 app.use('/cart', cartRouter);
 app.use('/categories', categoriesRouter);
+app.use('/products', productsRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');

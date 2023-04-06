@@ -9,7 +9,7 @@ cartRouter.get('/', (req: Request, res: Response) => {
 });
 
 cartRouter.post('/', (req: Request, res: Response) => {
-  const newProduct = cartRepository.addCartProduct(req.body.id);
+  const newProduct = cartRepository.addCartProduct(req.body.id, req.body.title);
   if (newProduct) {
     res.status(201).send(newProduct);
   } else {
