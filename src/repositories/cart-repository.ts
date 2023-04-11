@@ -54,7 +54,7 @@ export const cartRepository = {
     if (requiredItem) {
       const newProductInCart = requiredItem.items.find((pr) => pr.id === id);
       if (newProductInCart) {
-        productsInCart.push(newProductInCart);
+        productsInCart.unshift(newProductInCart);
         return newProductInCart;
       } else {
         return undefined;
