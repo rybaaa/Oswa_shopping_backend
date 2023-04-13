@@ -1,6 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
 
-const categories = [
+export type CategoryType = {
+  id: string;
+  title: string;
+  image: string;
+};
+
+const categories: CategoryType[] = [
   {
     id: uuidv4(),
     title: 'makeup',
@@ -64,15 +70,13 @@ const categories = [
 ];
 
 export const categoriesRepository = {
-  fetchAllCategories() {
+  async fetchAllCategories(): Promise<CategoryType[]> {
     return categories;
   },
-  fetchCategoriesByFilter(title: string) {
+  async fetchCategoriesByFilter(title: string): Promise<CategoryType | null> {
     const category = categories.find((el) => el.title === title);
     if (category) {
       return category;
-    } else {
-      return false;
-    }
+    } else return null;
   },
 };

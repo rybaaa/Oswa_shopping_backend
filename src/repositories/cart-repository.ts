@@ -1,4 +1,7 @@
-import { allProducts, ProductItemType } from './products-repository';
+import {
+  allProducts,
+  ProductItemType,
+} from './products-repository';
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -46,10 +49,13 @@ const productsInCart: ProductItemType[] = [
 ];
 
 export const cartRepository = {
-  getCartProducts() {
+  async getCartProducts(): Promise<ProductItemType[]> {
     return productsInCart;
   },
-  addCartProduct(id: string, title: string) {
+  async addCartProduct(
+    id: string,
+    title: string
+  ): Promise<ProductItemType | undefined> {
     const requiredItem = allProducts.find((it) => it.title === title);
     if (requiredItem) {
       const newProductInCart = requiredItem.items.find((pr) => pr.id === id);
@@ -61,16 +67,19 @@ export const cartRepository = {
       }
     } else return undefined;
   },
-  removeProductFromCart(id: string) {
+  async removeProductFromCart(id: string): Promise<ProductItemType[] | null> {
     for (let i = 0; i < productsInCart.length; i++) {
       if (productsInCart[i].id === id) {
-        productsInCart.splice(i, 1);
-        return productsInCart;
+        return productsInCart.splice(i, 1);
       }
     }
-    return false;
+    return null;
   },
-  updateProductDetailsFromCart(id: string, size?: string, color?: string) {
+  async updateProductDetailsFromCart(
+    id: string,
+    size?: string,
+    color?: string
+  ): Promise<ProductItemType | null> {
     const product = productsInCart.find((u) => u.id === id);
     if (product) {
       if (size) {
@@ -80,8 +89,6 @@ export const cartRepository = {
         product.currentColor = color;
       }
       return product;
-    } else {
-      return false;
-    }
+    } else return null;
   },
 };

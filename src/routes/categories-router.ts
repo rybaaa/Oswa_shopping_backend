@@ -1,10 +1,14 @@
 import { Request, Response, Router } from 'express';
-import { categoriesRepository } from '../repositories/categories-repository';
+import {
+  categoriesRepository,
+  CategoryType,
+} from '../repositories/categories-repository';
 
 export const categoriesRouter = Router({});
 
-categoriesRouter.get('/', (req: Request, res: Response) => {
-  const categories = categoriesRepository.fetchAllCategories();
+categoriesRouter.get('/', async (req: Request, res: Response) => {
+  const categories: CategoryType[] =
+    await categoriesRepository.fetchAllCategories();
   if (categories) {
     res.send(categories);
   } else {
@@ -12,10 +16,9 @@ categoriesRouter.get('/', (req: Request, res: Response) => {
   }
 });
 
-categoriesRouter.get('/:title', (req: Request, res: Response) => {
-  const filteredCategories = categoriesRepository.fetchCategoriesByFilter(
-    req.params.title
-  );
+categoriesRouter.get('/:title', async (req: Request, res: Response) => {
+  const filteredCategories: CategoryType | null =
+    await categoriesRepository.fetchCategoriesByFilter(req.params.title);
   if (filteredCategories) {
     res.send(filteredCategories);
   } else {

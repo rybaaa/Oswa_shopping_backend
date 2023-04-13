@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-type ProductsType = {
+export type ProductsType = {
   title: string;
   items: ProductItemType[];
 };
@@ -324,13 +324,13 @@ export const allProducts: ProductsType[] = [
 ];
 
 export const productsRepository = {
-  getAllProducts() {
+  async getAllProducts(): Promise<ProductsType[]> {
     return allProducts;
   },
-  fetchSpecificCategory(title: string) {
+  async fetchSpecificCategory(title: string): Promise<ProductsType | null> {
     const specificCategory = allProducts.find((it) => it.title === title);
     if (specificCategory) {
       return specificCategory;
-    } else return undefined;
+    } else return null;
   },
 };
