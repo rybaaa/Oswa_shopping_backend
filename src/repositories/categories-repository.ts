@@ -73,10 +73,13 @@ export const categoriesRepository = {
   async fetchAllCategories(): Promise<CategoryType[]> {
     return categories;
   },
-  async fetchCategoriesByFilter(title: string): Promise<CategoryType | null> {
-    const category = categories.find((el) => el.title === title);
-    if (category) {
-      return category;
+  async fetchCategoriesBySearch(title: string): Promise<string[] | null> {
+    const regex = new RegExp(title);
+    const foundCategories = categories.filter((el) => regex.test(el.title));
+    if (foundCategories) {
+      const titles: string[] = [];
+      foundCategories.forEach((el) => titles.push(el.title));
+      return titles;
     } else return null;
   },
 };
